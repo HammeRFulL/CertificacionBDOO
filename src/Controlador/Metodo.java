@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author carhe
+ * @author Carlos Herrera
  */
 public class Metodo {
     
@@ -84,7 +84,5 @@ public class Metodo {
             Conexion.desconectar();
             return false;
         }
-
     }
-    
 }
