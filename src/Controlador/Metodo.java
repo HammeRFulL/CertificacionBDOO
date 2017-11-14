@@ -68,8 +68,8 @@ public class Metodo {
             PROCEDURE.setString(3, NOMBRE);
             PROCEDURE.setString(4, APELLIDO);
             PROCEDURE.setString(5, TELEFONO);
-            PROCEDURE.setString(5, DEPARTAMENTO);
-            PROCEDURE.setInt(5, SUELDO);
+            PROCEDURE.setString(6, DEPARTAMENTO);
+            PROCEDURE.setInt(7, SUELDO);
             PROCEDURE.execute();
             Conexion.desconectar();
             return true;
