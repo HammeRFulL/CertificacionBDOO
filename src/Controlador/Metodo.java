@@ -56,7 +56,13 @@ public class Metodo {
     
     /**
      * Método llama al procedimiento de CRUD de JefeDepto y devuelve Booleano
-     * @OPT 1=insert, 2=update, 3=delete(logical), 4=undelete
+     * @param OPT Opcion crud (1=insertar, 2=actualizar, 3=eliminar jefe, 4=resaurar jefe)
+     * @param RUT Rut Jefe de Departamento
+     * @param NOMBRE Nombre Jefe de Departamento
+     * @param APELLIDO Apellido Jefe de Departamento
+     * @param TELEFONO Telefono Jefe de Departamento
+     * @param DEPARTAMENTO Nombre departamento en el cual trabaja
+     * @param SUELDO Sueldo Jefe de Departamento
      * @return Boolean
      */    
     public static boolean CrudJefe(int OPT, String RUT, String NOMBRE, String APELLIDO, 
