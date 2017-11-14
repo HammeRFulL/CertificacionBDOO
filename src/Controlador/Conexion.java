@@ -35,6 +35,13 @@ public class Conexion {
             return cn;
         }
     }
+
+    public static void desconectar() {
+        try {
+            DriverManager.getConnection("jdbc:oracle:thin:"+URL+PORT+TYPE, NAME, PASS).close();
+        } catch (Exception SQLException) {
+        }
+    }
     
     public static void commit(){
         String sql = "commit";

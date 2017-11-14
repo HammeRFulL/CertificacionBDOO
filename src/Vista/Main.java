@@ -104,7 +104,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        Modelo.Jefe_Depto Jefe = new Modelo.Jefe_Depto();
+        Vista.Jefe_Depto Jefe = new Vista.Jefe_Depto();
         panel.add(Jefe);
         Jefe.show();        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
