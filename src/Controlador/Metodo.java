@@ -5,12 +5,10 @@
  */
 package Controlador;
 
-import java.sql.PreparedStatement;
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,6 +17,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Metodo {
     
+    /**
+     * Método que devuelve la tabla de JedeDepto 
+     * @return Modelo de la tabla completa con registros
+     */
     public static DefaultTableModel CargarJefe() {
         String sql = "SELECT J.RUT , J.NOMBRE, J.APELLIDO, J.TELEFONO, J.ESTADO, "
                 + "J.NOMBREDEPTO, J.SUELDO FROM JEFEDEPTO J";
@@ -47,10 +49,36 @@ public class Metodo {
             Conexion.desconectar();
             return model;
         } catch (SQLException ex) {
-            //Logger.getLogger(OAD_CHOFER.class.getName()).log(Level.SEVERE, null, ex);
             Conexion.desconectar();
             return model;
         }
+    }
+    
+    /**
+     * Método llama al procedimiento de CRUD de JefeDepto y devuelve Booleano
+     * @OPT 1=insert, 2=update, 3=delete(logical), 4=undelete
+     * @return Boolean
+     */    
+    public static boolean CrudJefe(int OPT, String RUT, String NOMBRE, String APELLIDO, 
+            String TELEFONO, String DEPARTAMENTO, int SUELDO) {
+        try {
+            CallableStatement PROCEDURE = Conexion.conectar().prepareCall("{call JEFE_CRUD (?,?,?,?,?,?,?)}");
+            PROCEDURE.setInt(1, OPT);
+            PROCEDURE.setString(2, RUT);
+            PROCEDURE.setString(3, NOMBRE);
+            PROCEDURE.setString(4, APELLIDO);
+            PROCEDURE.setString(5, TELEFONO);
+            PROCEDURE.setString(5, DEPARTAMENTO);
+            PROCEDURE.setInt(5, SUELDO);
+            PROCEDURE.execute();
+            Conexion.desconectar();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("EL ERROR ES:" + ex);
+            Conexion.desconectar();
+            return false;
+        }
+
     }
     
 }
